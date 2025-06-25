@@ -33,19 +33,16 @@ class ShoppingMall {
     var count = int.tryParse('$countInput');
 
     try {
-      bool isContain = false;
-      Product? product;
-      for (Product p in products) {
-        if (p.name == nameInput) {
-          isContain = true;
-          product = p;
-        }
-      }
-      if ((isContain) == false) {
+      var matchResult = products.where(
+        (product) => product.name == nameInput,
+      ); // 같으면 true, 틀리면 false
+
+      if (matchResult.isEmpty) {
         print('입력 값이 올바르지 않아요!');
-      } else if (count! <= 0) {
+      } else if (count == null || count <= 0) {
         print('0개보다 많은 개수의 상품만 담을 수 있어요!');
       } else {
+        Product product = matchResult.first;
         var addPrice = product!.price * count;
         cartItems.add(addPrice);
         print('장바구니에 상품이 담겼어요!');

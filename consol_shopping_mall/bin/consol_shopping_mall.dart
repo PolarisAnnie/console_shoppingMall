@@ -1,4 +1,4 @@
-import 'dart:io'; //stdin.readLineSync() 활용 시 필
+import 'dart:io'; //stdin.readLineSync() 활용 시 필요
 import 'package:consol_shopping_mall/shopping_mall_class.dart';
 
 //함수 실행 부분
