@@ -27,3 +27,6 @@ Console Shopping Mall
 
 ### 기술스택
 ✔️ dart
+
+### 기능 구현 타임라인 및 트러블슈팅
+ - [바로가기](https://polariseunhee94.notion.site/21b3216a4dd28096aecaf7171906d96f?source=copy_link)
