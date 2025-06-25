@@ -1,37 +1,5 @@
-import 'dart:io'; //stdin.readLineSync() 활용 시 필요
-
-// ShoppingMall 클래스 정의
-
-class ShoppingMall {
-  List<Product> products = [
-    Product("셔츠", 45000),
-    Product("원피스", 30000),
-    Product("반팔티", 35000),
-    Product("반바지", 38000),
-    Product("양말", 500),
-  ];
-  int totalprice = 0;
-
-  void showProducts() {
-    for (Product product in products) {
-      print('${product.name} / ${product.price}원');
-    }
-  }
-}
-/*
-void addTocart() {}
-void showTotal() {
-  print('장바구니에 ${totalprice}원 어치를 담으셨네요 !');
-}
-*/
-
-// Product class 정의
-class Product {
-  String name;
-  int price;
-
-  Product(this.name, this.price);
-}
+import 'dart:io'; //stdin.readLineSync() 활용 시 필
+import 'package:consol_shopping_mall/shopping_mall_class.dart';
 
 //함수 실행 부분
 void main() {
@@ -42,6 +10,7 @@ void main() {
     print(
       '$dash\n [1]상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 총 가격 보기 / [4] 프로그램 종료 \n$dash',
     );
+
     String? input = stdin.readLineSync();
 
     switch (input) {
@@ -52,12 +21,12 @@ void main() {
 
       case '2':
         print('[2] 장바구니에 담기');
-        //shop.addTocart();
+        shop.addTocart();
         break;
 
       case '3':
         print('[3] 장바구니에 담긴 총 가격 보기');
-        //shop.showTotal();
+        shop.showTotal();
         break;
       case '4':
         print('정말 종료하시겠습니까? 종료하려면 5를 눌러주세요.');

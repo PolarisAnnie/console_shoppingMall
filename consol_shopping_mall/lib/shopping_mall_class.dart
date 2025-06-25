@@ -1,0 +1,66 @@
+import 'dart:io';
+import 'package:consol_shopping_mall/product_class.dart';
+
+// ShoppingMall 클래스 정의
+
+class ShoppingMall {
+  List<Product> products = [
+    Product('셔츠', 45000),
+    Product("원피스", 30000),
+    Product("반팔티", 35000),
+    Product("반바지", 38000),
+    Product("양말", 500),
+  ];
+  List<int> cartItems = [];
+  int totalprice = 0;
+
+  // showProducts 함수
+
+  void showProducts() {
+    for (Product product in products) {
+      print('${product.name} / ${product.price}원');
+    }
+  }
+
+  // addTocart 함수
+
+  void addTocart() {
+    print('상품 이름을 입력해 주세요!');
+    String? nameInput = stdin.readLineSync();
+
+    print('상품 개수를 입력해 주세요!');
+    String? countInput = stdin.readLineSync();
+    var count = int.tryParse('$countInput');
+
+    try {
+      bool isContain = false;
+      Product? product;
+      for (Product p in products) {
+        if (p.name == nameInput) {
+          isContain = true;
+          product = p;
+        }
+      }
+      if ((isContain) == false) {
+        print('입력 값이 올바르지 않아요!');
+      } else if (count! <= 0) {
+        print('0개보다 많은 개수의 상품만 담을 수 있어요!');
+      } else {
+        var addPrice = product!.price * count;
+        cartItems.add(addPrice);
+        print('장바구니에 상품이 담겼어요!');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // showTotal 함수
+
+  void showTotal() {
+    int totalprice = cartItems.fold(0, (a, b) {
+      return a + b;
+    });
+    print('장바구니에 $totalprice원 어치를 담으셨네요 !');
+  }
+}
