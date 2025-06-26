@@ -12,6 +12,7 @@ class ShoppingMall {
     Product("양말", 500),
   ];
   List<int> cartItems = [];
+  List<String> cartItemsName = [];
   int totalprice = 0;
 
   // showProducts 함수
@@ -45,6 +46,7 @@ class ShoppingMall {
         Product product = matchResult.first;
         var addPrice = product.price * count;
         cartItems.add(addPrice);
+        cartItemsName.add(nameInput!);
         print('장바구니에 상품이 담겼어요!');
       }
     } catch (e) {
@@ -58,7 +60,11 @@ class ShoppingMall {
     totalprice = cartItems.fold(0, (a, b) {
       return a + b;
     });
-    print('장바구니에 $totalprice원 어치를 담으셨네요 !');
+    if (totalprice > 0) {
+      print('장바구니에 ${cartItemsName.join(',')}가 담겨있네요. 총 가격 $totalprice원 입니다 !');
+    } else {
+      print('장바구니가 비어있어요!');
+    }
   }
 
   // clearCart 함수
