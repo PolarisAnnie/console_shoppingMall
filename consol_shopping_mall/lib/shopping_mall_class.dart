@@ -43,7 +43,7 @@ class ShoppingMall {
         print('0개보다 많은 개수의 상품만 담을 수 있어요!');
       } else {
         Product product = matchResult.first;
-        var addPrice = product!.price * count;
+        var addPrice = product.price * count;
         cartItems.add(addPrice);
         print('장바구니에 상품이 담겼어요!');
       }
@@ -55,9 +55,20 @@ class ShoppingMall {
   // showTotal 함수
 
   void showTotal() {
-    int totalprice = cartItems.fold(0, (a, b) {
+    totalprice = cartItems.fold(0, (a, b) {
       return a + b;
     });
     print('장바구니에 $totalprice원 어치를 담으셨네요 !');
+  }
+
+  // clearCart 함수
+
+  void clearCart() {
+    if (totalprice > 0) {
+      cartItems.clear();
+      print('장바구니를 초기화합니다.');
+    } else {
+      print('이미 장바구니가 비어있습니다.');
+    }
   }
 }

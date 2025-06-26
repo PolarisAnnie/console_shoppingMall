@@ -8,7 +8,7 @@ void main() {
   while (status) {
     String dash = '-' * 80;
     print(
-      '$dash\n [1]상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 총 가격 보기 / [4] 프로그램 종료 \n$dash',
+      '$dash\n [1]상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 총 가격 보기 / [4] 프로그램 종료 / [6] 장바구니 비우기 \n$dash',
     );
 
     String? input = stdin.readLineSync();
@@ -37,6 +37,11 @@ void main() {
         } else {
           print('종료하지 않습니다.');
         }
+        break;
+
+      case '6':
+        print('[6] 장바구니 비우기');
+        shop.clearCart();
         break;
 
       default:
